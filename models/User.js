@@ -1,7 +1,7 @@
 const { Schema, model } = require('mongoose');
 const { User } = require('.');
 
-// Schema to create a course model
+// Schema to create a user model
 const userSchema = new Schema(
   {
     userName: {
@@ -16,10 +16,16 @@ const userSchema = new Schema(
       unique: true,
       match: [/\w+@\w+.\{2,3}+/, "Not valid email"]
     },
-    students: [
+    thoughts: [
       {
         type: Schema.Types.ObjectId,
-        ref: 'Student',
+        ref: 'Thought',
+      },
+    ],
+    friends: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: 'User',
       },
     ],
   },
@@ -30,7 +36,10 @@ const userSchema = new Schema(
     id: false,
   }
 );
+userSchema.virtual("friendCount").get(function () {
+  return this.friends.length
+})
 
-const Course = model('user', userSchema);
+const User = model('user', userSchema);
 
 module.exports = User;
