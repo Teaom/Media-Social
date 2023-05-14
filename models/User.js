@@ -13,7 +13,7 @@ const userSchema = new Schema(
       type: String,
       required: true,
       unique: true,
-      match: [/\w+@\w(\.\w{2,3})+/, "Not valid email"]
+      match: [/\w+@\w+(\.\w{2,3})+/, "Not valid email"]
     },
     thoughts: [
       {
