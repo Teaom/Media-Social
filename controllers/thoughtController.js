@@ -100,7 +100,7 @@ module.exports = {
 
   // Add an reaction to a thought
   async addReaction(req, res) {
-    console.log('You are adding an assignment');
+    console.log('You are adding a reaction');
     console.log(req.body);
 
     try {
@@ -126,7 +126,7 @@ module.exports = {
     try {
       const thoughtData = await Thought.findOneAndUpdate(
         { _id: req.params.thoughtId },
-        { $pull: { reactions: { reactionId: req.params.reactiontId } } },
+        { $pull: { reactions: { reactionId: req.params.reactionId } } },
         { runValidators: true, new: true }
       );
 
