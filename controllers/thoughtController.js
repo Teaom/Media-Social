@@ -2,9 +2,6 @@ const { ObjectId } = require('mongoose').Types;
 const { Thought, User } = require('../models');
 
 module.exports = {
-    //   addReaction,
-    //   removeReaction,
-
   
     // Get all thoughts
     async getAllThoughts(req, res) {
