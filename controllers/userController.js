@@ -1,11 +1,10 @@
 const { User, Thought } = require('../models');
 
 module.exports = {
-  // deleteUser,
   // addFriend,
   // RemoveFriend
     
-  // Get all courses
+ 
 
 
   async getAllUsers(req, res) {
@@ -21,8 +20,8 @@ module.exports = {
     try {
       const userData = await User.findOne({ _id: req.params.userId })
         .select('-__v')
-        // .populate("friends")
-        .populate('thoughts');
+        .populate('thoughts')
+        .populate("friends");
 
       if (!userData) {
         return res.status(404).json({ message: 'No user with that ID' });
@@ -79,7 +78,7 @@ module.exports = {
 
   // Add friend
   async addFriend(req, res) {
-    console.log('You are adding a reaction');
+    console.log('You are adding a friend');
     console.log(req.body);
 
     try {
@@ -92,7 +91,7 @@ module.exports = {
       if (!userData) {
         return res
           .status(404)
-          .json({ message: 'No thought found with that ID :(' });
+          .json({ message: 'No friend found with that ID :(' });
       }
 
       res.json(userData);
@@ -105,14 +104,14 @@ module.exports = {
     try {
       const userData = await User.findOneAndUpdate(
         { _id: req.params.userId },
-        { $pull: { friends: { friends: req.params.friendsId } } },
-        { runValidators: true, new: true }
+        { $pull: { friends:  req.params.friendsId  } },
+        {  new: true }
       );
 
       if (!userData) {
         return res
           .status(404)
-          .json({ message: 'No thought found with that ID :(' });
+          .json({ message: 'No friend found with that ID :(' });
       }
 
       res.json(userData);
