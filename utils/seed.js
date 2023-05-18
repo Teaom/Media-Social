@@ -15,12 +15,16 @@ connection.once('open', async () => {
   // Create empty array to hold the students
   const users = [
     {
-        username: "Clark",
-        email: "clark@mail.com"
+        username: "Daniel",
+        email: "Daniel@mail.com"
     },
     {
         username: "Tyler",
         email: "tyler@mail.com"
+    },
+    {
+      username: "Lewis",
+      email: "Lewis@mail.com"
     }
   ];
 
