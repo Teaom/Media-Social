@@ -21,11 +21,8 @@ connection.once('open', async () => {
     {
         username: "Tyler",
         email: "tyler@mail.com"
-    },
-    {
-      username: "Lewis",
-      email: "Lewis@mail.com"
     }
+    
   ];
 
   // Add students to the collection and await the results
